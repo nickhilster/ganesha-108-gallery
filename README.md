@@ -22,6 +22,12 @@ To validate the selected archive files and their SHA-256 hashes without rewritin
 
 The import script takes only the selected IDs in src/data/galleries.json, validates the 108-image count and unique hashes, and writes optimized WebP sources to src/assets/artworks/. It does not move or alter archive files. Astro creates responsive delivery variants at build time.
 
+## Motion candidate studies
+
+The next production sprint has 18 motion studies under `public/motion-candidates-v1/`. Each candidate contains twelve 768px WebP frames and a looping WebP preview at 24 fps. Run `npm run motion:generate` to recreate them from the locked source artwork; the generator requires Pillow, NumPy, and OpenCV in the active Python environment.
+
+After `npm run build` and `npm run preview`, open `/motion-candidates-v1/` to compare the loops and expand any card to inspect its twelve frames. These are shortlist studies; the selected nine should be encoded into final WebM and MP4 delivery assets after review.
+
 ## Acknowledgment
 
 This is a personal devotional and creative project. I am grateful to the artists, illustrators, animators, storytellers, and creators whose work and imagination inspired these explorations, and to OpenAI for the creative tools that helped me explore them.

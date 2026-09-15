@@ -4,3 +4,5 @@ dist/
 .DS_Store
 Thumbs.db
 *.log
+work/
+__pycache__/
