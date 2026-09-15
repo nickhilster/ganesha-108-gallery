@@ -9,7 +9,8 @@
     "verify": "node scripts/verify-build.mjs",
     "preview": "astro preview",
     "import:archive": "node scripts/import-archive.mjs",
-    "motion:generate": "python scripts/generate-motion-candidates.py"
+    "motion:generate": "python scripts/generate-motion-candidates.py",
+    "motion:pilots": "python scripts/generate-motion-pilots.py"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.3.0",

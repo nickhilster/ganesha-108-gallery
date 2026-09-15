@@ -24,9 +24,17 @@ The import script takes only the selected IDs in src/data/galleries.json, valida
 
 ## Motion candidate studies
 
-The next production sprint has 18 motion studies under `public/motion-candidates-v1/`. Each candidate contains twelve 768px WebP frames and a looping WebP preview at 24 fps. Run `npm run motion:generate` to recreate them from the locked source artwork; the generator requires Pillow, NumPy, and OpenCV in the active Python environment.
+The first production sprint draft has 18 whole-raster motion studies under `public/motion-candidates-v1/`. Each candidate contains twelve 768px WebP frames and a looping WebP preview at 24 fps. They are retained as a visual comparison set; they do not define the element-level motion contract. Run `npm run motion:generate` to recreate them from the source artwork; the generator requires Pillow, NumPy, and OpenCV in the active Python environment.
 
 After `npm run build` and `npm run preview`, open `/motion-candidates-v1/` to compare the loops and expand any card to inspect its twelve frames. These are shortlist studies; the selected nine should be encoded into final WebM and MP4 delivery assets after review.
+
+## Element-level motion pilots
+
+The corrected pilot is under `public/motion-pilots-v2/`. It uses the same 12-frame, 24 fps contract, but composes each frame from an unchanged source artwork and a transparent overlay for the named moving elements. The generator records the locked-region check in `public/motion-pilots-v2/metadata.json`:
+
+    npm run motion:pilots
+
+After a build and preview, open `/motion-pilots-v2/` to compare the static source, composite loop, and transparent motion layer for IDs 066 and 080. The v1 whole-raster studies remain available for comparison while the layer boundary is being reviewed.
 
 ## Acknowledgment
 

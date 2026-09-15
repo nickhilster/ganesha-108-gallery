@@ -1,0 +1,67 @@
+{
+  "version": "v2-element-level-pilot",
+  "contract": {
+    "baseLayer": "pixel-locked source artwork",
+    "motionLayer": "transparent overlays only",
+    "frames": 12,
+    "fps": 24,
+    "durationSeconds": 0.5,
+    "loop": "frame 12 to frame 1"
+  },
+  "pilots": [
+    {
+      "id": "066",
+      "title": "Ganesha as Sound Waves",
+      "frames": 12,
+      "fps": 24,
+      "durationSeconds": 0.5,
+      "size": [
+        768,
+        768
+      ],
+      "baseLocked": true,
+      "lockedRegionIdentical": true,
+      "serializedLockedRegionIdentical": true,
+      "encodedLoopFrames": 12,
+      "frameDurationMs": 42,
+      "encodedDurationMs": 504,
+      "baseSha256": "8e2da726e02e04116d79674e333d545d2c7dd998006c61197a04991b57ad7bbd",
+      "lockedElements": "Ganesha body, face, hands, and inner glow",
+      "animatedElements": "outer sound-wave rings and sparse orbiting particles",
+      "source": "066-ganesha-as-sound-waves.webp",
+      "reviewFiles": {
+        "source": "source.webp",
+        "loop": "loop.webp",
+        "overlayLoop": "overlay-loop.webp",
+        "lockedRegion": "locked-region.webp"
+      }
+    },
+    {
+      "id": "080",
+      "title": "Ganesha as Glass + Rain",
+      "frames": 12,
+      "fps": 24,
+      "durationSeconds": 0.5,
+      "size": [
+        768,
+        768
+      ],
+      "baseLocked": true,
+      "lockedRegionIdentical": true,
+      "serializedLockedRegionIdentical": true,
+      "encodedLoopFrames": 12,
+      "frameDurationMs": 42,
+      "encodedDurationMs": 504,
+      "baseSha256": "b8ced8e9ee4083a5d388fd766ff7abd342e31e8d44f1edd9dd8f71d8905803eb",
+      "lockedElements": "Ganesha and the surrounding city bokeh",
+      "animatedElements": "selected raindrops, rivulets, and edge-glass highlights",
+      "source": "080-ganesha-as-glass-rain.webp",
+      "reviewFiles": {
+        "source": "source.webp",
+        "loop": "loop.webp",
+        "overlayLoop": "overlay-loop.webp",
+        "lockedRegion": "locked-region.webp"
+      }
+    }
+  ]
+}
