@@ -1,0 +1,94 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import ArtworkCard from "../../components/ArtworkCard.astro";
+import galleriesData from "../../data/galleries.json";
+import artworks from "../../data/artworks.json";
+import illusionNotes from "../../data/illusion-notes.json";
+import { getArtworkImage } from "../../utils/artwork-images";
+import { sitePath } from "../../utils/site-path";
+
+export function getStaticPaths() {
+  return galleriesData.galleries.map((gallery) => ({
+    params: { slug: gallery.slug },
+    props: { gallery },
+  }));
+}
+
+const { gallery } = Astro.props;
+const galleryArtworks = gallery.members
+  .map((id) => artworks.find((artwork) => artwork.id === id))
+  .filter(Boolean);
+const cover = galleryArtworks.find((artwork) => artwork?.id === gallery.coverId)!;
+const coverImage = getArtworkImage(cover.file);
+const pageCover = coverImage.src;
+const galleryIndex = galleriesData.galleries.findIndex((item) => item.slug === gallery.slug);
+const previousGallery = galleriesData.galleries[(galleryIndex + galleriesData.galleries.length - 1) % galleriesData.galleries.length];
+const nextGallery = galleriesData.galleries[(galleryIndex + 1) % galleriesData.galleries.length];
+const isIllusionGallery = gallery.slug === "light-shadow-optical-illusions";
+---
+
+<SiteLayout
+  title={gallery.title}
+  description={gallery.intro}
+  pageAccent={gallery.accent}
+  pageCover={pageCover}
+>
+  <section class="gallery-page" aria-labelledby="gallery-title">
+    <div class="gallery-heading">
+      <div class="gallery-heading-copy">
+        <a class="back-link" href={sitePath("#galleries")}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M19 12H5m7 7-7-7 7-7" />
+          </svg>
+          <span>All galleries</span>
+        </a>
+        <h1 id="gallery-title">{gallery.title}</h1>
+        <p class="gallery-subtitle">{gallery.number} of 09 <span aria-hidden="true">·</span> 12 works</p>
+        <p class="gallery-intro">{gallery.intro}</p>
+        {isIllusionGallery && (
+          <p class="look-first">Open a work to reveal an optional note.</p>
+        )}
+      </div>
+      <div class="gallery-heading-controls">
+        <button class="button button-outline surprise-button" type="button" data-surprise>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3ZM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16ZM5 3l.6 1.4L7 5l-1.4.6L5 7l-.6-1.4L3 5l1.4-.6L5 3Z" />
+          </svg>
+          <span>Surprise me</span>
+        </button>
+        <nav class="gallery-neighbors" aria-label="Browse galleries">
+          <a href={sitePath("galleries/" + previousGallery.slug + "/")} aria-label={"Previous gallery: " + previousGallery.title}>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m15 5-7 7 7 7" /></svg>
+          </a>
+          <a href={sitePath("galleries/" + nextGallery.slug + "/")} aria-label={"Next gallery: " + nextGallery.title}>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 7 7-7 7" /></svg>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <ol class="artwork-grid" aria-label={gallery.title + " artworks"}>
+      {galleryArtworks.map((artwork, index) => artwork && (
+        <li>
+          <ArtworkCard
+            artwork={artwork}
+            position={index + 1}
+            groupSlug={gallery.slug}
+            note={isIllusionGallery ? illusionNotes[artwork.id as keyof typeof illusionNotes] : undefined}
+          />
+        </li>
+      ))}
+    </ol>
+
+    <nav class="gallery-end-nav" aria-label="Continue exploring">
+      <a class="gallery-end-link" href={sitePath("galleries/" + previousGallery.slug + "/")}>
+        <span class="end-direction">Previous collection</span>
+        <span>{previousGallery.title}</span>
+      </a>
+      <a class="gallery-end-link end-link-next" href={sitePath("galleries/" + nextGallery.slug + "/")}>
+        <span class="end-direction">Next collection</span>
+        <span>{nextGallery.title}</span>
+      </a>
+    </nav>
+  </section>
+</SiteLayout>

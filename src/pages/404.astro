@@ -1,0 +1,12 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { sitePath } from "../utils/site-path";
+---
+
+<SiteLayout title="Not found">
+  <section class="not-found">
+    <h1>This path has wandered.</h1>
+    <p>The artwork is still here. Let’s return to the nine galleries.</p>
+    <a class="button button-primary" href={sitePath("#galleries")}>Back to the galleries</a>
+  </section>
+</SiteLayout>

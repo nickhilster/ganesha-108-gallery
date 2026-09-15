@@ -1,0 +1,114 @@
+{
+  "galleries": [
+    {
+      "number": "01",
+      "slug": "cosmic-time-scale-physics",
+      "title": "Cosmic Time, Scale & Physics",
+      "shortTitle": "Cosmic Time",
+      "intro": "From the beginning of the universe to clocks ticking 108 seconds apart, Ganesha appears through changing scales of time and space.",
+      "coverId": "067",
+      "gridArea": "cosmic",
+      "accent": "#83b7ff",
+      "members": ["002", "003", "004", "043", "050", "051", "052", "067", "072", "073", "092", "109"]
+    },
+    {
+      "number": "02",
+      "slug": "living-systems-environments",
+      "title": "Living Systems & Environments",
+      "shortTitle": "Living Worlds",
+      "intro": "Ganesha takes shape in living systems, from flowers and forests to water, weather, and migration.",
+      "coverId": "059",
+      "gridArea": "living",
+      "accent": "#72cda6",
+      "members": ["054", "055", "057", "058", "059", "060", "063", "071", "078", "082", "088", "090"]
+    },
+    {
+      "number": "03",
+      "slug": "elements-materials-transformation",
+      "title": "Elements, Materials & Transformation",
+      "shortTitle": "Elements & Change",
+      "intro": "Fire, ice, glass, stone, roots, and change become material for seeing Ganesha anew.",
+      "coverId": "005",
+      "gridArea": "elements",
+      "accent": "#ffa65c",
+      "members": ["005", "064", "065", "075", "076", "077", "080", "081", "083", "084", "085", "091"]
+    },
+    {
+      "number": "04",
+      "slug": "mind-meaning-healing",
+      "title": "Mind, Meaning & Healing",
+      "shortTitle": "Mind & Meaning",
+      "intro": "A gallery of memory, dreams, wisdom, healing, and meanings that unfold with reflection.",
+      "coverId": "069",
+      "gridArea": "mind",
+      "accent": "#ad95fa",
+      "members": ["009", "011", "012", "015", "033", "044", "045", "046", "047", "069", "070", "074"]
+    },
+    {
+      "number": "05",
+      "slug": "art-pattern-visual-language",
+      "title": "Art, Pattern & Visual Language",
+      "shortTitle": "Art & Pattern",
+      "intro": "Geometry, ink, line, and color become visual worlds for Ganesha.",
+      "coverId": "026",
+      "gridArea": "art",
+      "accent": "#e89dc9",
+      "members": ["021", "022", "023", "024", "025", "026", "028", "031", "035", "048", "079", "086"]
+    },
+    {
+      "number": "06",
+      "slug": "rhythm-sport-performance",
+      "title": "Rhythm, Sport & Performance",
+      "shortTitle": "Rhythm & Movement",
+      "intro": "Music, dance, sport, and festival energy meet in a gallery full of motion and performance.",
+      "coverId": "095",
+      "gridArea": "rhythm",
+      "accent": "#f0a85f",
+      "members": ["006", "007", "008", "010", "013", "029", "030", "039", "040", "053", "066", "095"]
+    },
+    {
+      "number": "07",
+      "slug": "games-technology-built-worlds",
+      "title": "Games, Technology & Built Worlds",
+      "shortTitle": "Games & Technology",
+      "intro": "A playful exploration of games, gadgets, architecture, cities, networks, and shared invention.",
+      "coverId": "061",
+      "gridArea": "games",
+      "accent": "#52bad5",
+      "members": ["016", "020", "032", "034", "036", "038", "049", "056", "061", "062", "087", "089"]
+    },
+    {
+      "number": "08",
+      "slug": "animation-comics-fantasy-storyworlds",
+      "title": "Animation, Comics & Fantasy Storyworlds",
+      "shortTitle": "Mythic Storyworlds",
+      "intro": "Original, affectionate interpretations meet the animated, comic, and fantasy worlds that have sparked our imaginations.",
+      "coverId": "110",
+      "gridArea": "storyworlds",
+      "accent": "#efa5a2",
+      "members": ["014", "017", "018", "019", "037", "041", "042", "096", "097", "098", "099", "110"]
+    },
+    {
+      "number": "09",
+      "slug": "light-shadow-optical-illusions",
+      "title": "Light, Shadow & Optical Illusions",
+      "shortTitle": "Light & Illusion",
+      "intro": "Optical effects, ambiguous figures, and impossible forms invite a second look.",
+      "coverId": "107",
+      "gridArea": "illusion",
+      "accent": "#a6b5f4",
+      "members": ["001", "027", "068", "100", "101", "102", "103", "104", "105", "106", "107", "108"]
+    }
+  ],
+  "homeLayoutOrder": [
+    "cosmic-time-scale-physics",
+    "mind-meaning-healing",
+    "living-systems-environments",
+    "elements-materials-transformation",
+    "art-pattern-visual-language",
+    "rhythm-sport-performance",
+    "games-technology-built-worlds",
+    "animation-comics-fantasy-storyworlds",
+    "light-shadow-optical-illusions"
+  ]
+}

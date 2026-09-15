@@ -1,0 +1,61 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import GalleryTile from "../components/GalleryTile.astro";
+import galleriesData from "../data/galleries.json";
+import artworks from "../data/artworks.json";
+import { getArtworkImage } from "../utils/artwork-images";
+
+const galleries = galleriesData.galleries;
+const artworkById = new Map(artworks.map((artwork) => [artwork.id, artwork]));
+const homeGalleries = galleriesData.homeLayoutOrder.map((slug) =>
+  galleries.find((gallery) => gallery.slug === slug),
+);
+const centralGallery = galleries.find((gallery) => gallery.slug === "cosmic-time-scale-physics")!;
+const centralArtwork = artworkById.get(centralGallery.members.find((id) => id === centralGallery.coverId)!)!;
+const centralImage = getArtworkImage(centralArtwork.file);
+const pageCover = centralImage.src;
+---
+
+<SiteLayout
+  title="Ganesha 108"
+  description="108 unique visions of Ganesha, arranged into nine image-led galleries as a personal offering of curiosity, wonder, and gratitude."
+  pageAccent={centralGallery.accent}
+  pageCover={pageCover}
+>
+  <section class="landing-hero" aria-labelledby="home-title">
+    <h1 id="home-title">A universe of devotion.</h1>
+    <p>
+      108 visions of Ganesha, gathered as a personal offering of curiosity,
+      wonder, and gratitude.
+    </p>
+    <a class="button button-primary" href="#galleries">
+      <span>Enter the galleries</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 12h15M13 5l7 7-7 7" />
+      </svg>
+    </a>
+  </section>
+
+  <section class="gallery-index" id="galleries" aria-labelledby="gallery-index-title">
+    <h2 class="visually-hidden" id="gallery-index-title">The nine galleries</h2>
+    <div class="home-gallery-grid">
+      {homeGalleries.map((gallery) => {
+        if (!gallery) return null;
+        const cover = artworkById.get(gallery.coverId);
+        if (!cover) return null;
+        return (
+          <GalleryTile
+            gallery={gallery}
+            cover={cover}
+            priority={gallery.slug === centralGallery.slug}
+          />
+        );
+      })}
+    </div>
+    <div class="collection-progress" aria-live="polite">
+      <span class="progress-track" aria-hidden="true"><span data-progress-bar></span></span>
+      <span data-progress-label>0 of 108 explored</span>
+      <span class="progress-private">Saved only on this device</span>
+    </div>
+  </section>
+</SiteLayout>

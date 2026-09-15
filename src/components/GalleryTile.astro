@@ -1,0 +1,56 @@
+---
+import { Picture } from "astro:assets";
+import { getArtworkImage } from "../utils/artwork-images";
+import { sitePath } from "../utils/site-path";
+
+interface Gallery {
+  number: string;
+  slug: string;
+  title: string;
+  shortTitle: string;
+  accent: string;
+  gridArea: string;
+}
+
+interface Artwork {
+  title: string;
+  file: string;
+}
+
+interface Props {
+  gallery: Gallery;
+  cover: Artwork;
+  priority?: boolean;
+}
+
+const { gallery, cover, priority = false } = Astro.props;
+const image = getArtworkImage(cover.file);
+const imageUrl = image.src;
+const tileStyle = "grid-area: " + gallery.gridArea + "; --tile-image: url('" + imageUrl + "'); --tile-accent: " + gallery.accent;
+---
+
+<a
+  class="gallery-tile"
+  href={sitePath("galleries/" + gallery.slug + "/")}
+  style={tileStyle}
+  aria-label={gallery.title + ", gallery of twelve artworks"}
+  data-gallery-link={gallery.slug}
+>
+  <span class="gallery-tile-art">
+    <Picture
+      src={image}
+      alt=""
+      widths={[320, 480, 720]}
+      sizes="(max-width: 699px) 46vw, (max-width: 1099px) 27vw, 20rem"
+      formats={["avif"]}
+      fallbackFormat="webp"
+      loading={priority ? "eager" : "lazy"}
+      fetchpriority={priority ? "high" : "auto"}
+    />
+  </span>
+  <span class="gallery-tile-label">
+    <span class="tile-number">{gallery.number}</span>
+    <span class="tile-title">{gallery.shortTitle}</span>
+    <span class="tile-count">12 works</span>
+  </span>
+</a>

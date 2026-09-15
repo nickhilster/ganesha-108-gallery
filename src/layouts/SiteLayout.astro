@@ -1,0 +1,75 @@
+---
+import "../styles/global.css";
+import LotusMark from "../components/LotusMark.astro";
+import StoryDialog from "../components/StoryDialog.astro";
+import ArtworkViewer from "../components/ArtworkViewer.astro";
+import { sitePath } from "../utils/site-path";
+
+interface Props {
+  title?: string;
+  description?: string;
+  pageAccent?: string;
+  pageCover?: string;
+}
+
+const {
+  title = "Ganesha 108",
+  description = "A personal offering of 108 AI-assisted visions of Ganesha, gathered with devotion, curiosity, wonder, and gratitude.",
+  pageAccent = "#83b7ff",
+  pageCover = "",
+} = Astro.props;
+const pageTitle = title === "Ganesha 108" ? title : title + " — Ganesha 108";
+const pageStyle = "--page-accent: " + pageAccent + (pageCover ? "; --page-cover: url('" + pageCover + "')" : "");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07152d" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(pageCover, Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href={sitePath("favicon.svg")} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <title>{pageTitle}</title>
+  </head>
+  <body style={pageStyle}>
+    <a class="skip-link" href="#main-content">Skip to the gallery</a>
+    <header class="site-header">
+      <a class="brand" href={sitePath()} aria-label="Ganesha 108 home">
+        <LotusMark class="brand-mark" />
+        <span>GANESHA 108</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href={sitePath("#galleries")}>The galleries</a>
+        <button type="button" class="nav-story" data-open-story>About this offering</button>
+      </nav>
+    </header>
+    <main id="main-content">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="footer-ornament" aria-hidden="true">
+        <span></span><LotusMark /><span></span>
+      </div>
+      <div class="footer-links">
+        <button type="button" data-open-story>About this offering</button>
+        <a
+          href="https://github.com/nickhilster/ganesha-108-gallery"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Project source on GitHub, opens in a new tab"
+        >Project source</a>
+      </div>
+      <p class="footer-note">Made with devotion, curiosity, and gratitude.</p>
+    </footer>
+    <StoryDialog />
+    <ArtworkViewer />
+    <script src="../scripts/interactions.ts"></script>
+  </body>
+</html>

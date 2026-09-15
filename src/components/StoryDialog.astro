@@ -1,0 +1,51 @@
+---
+import LotusMark from "./LotusMark.astro";
+---
+
+<dialog class="story-dialog" id="story-dialog" aria-labelledby="story-title">
+  <div class="dialog-inner">
+    <button class="dialog-close" type="button" aria-label="Close the story" data-close-story>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M5 5 19 19M19 5 5 19" />
+      </svg>
+    </button>
+    <div class="dialog-ornament" aria-hidden="true">
+      <span></span><LotusMark /><span></span>
+    </div>
+    <h2 id="story-title">The story behind this offering</h2>
+
+    <section class="story-section">
+      <h3>A personal offering</h3>
+      <p>
+        I’m Nikhil. This collection is my way of spending Ganesh Chaturthi in
+        prayer, imagination, and art. Each image is an invitation to see Ganesha
+        through a different lens—with devotion, curiosity, and joy.
+      </p>
+    </section>
+
+    <section class="story-section">
+      <h3>With gratitude</h3>
+      <p>
+        I’m grateful to the artists, illustrators, animators, storytellers, and
+        creators whose work opened these worlds to me. Thank you to OpenAI for
+        the creative tools that helped me explore these ideas, and to everyone
+        who takes time to look.
+      </p>
+    </section>
+
+    <section class="story-section">
+      <h3>An independent project</h3>
+      <p>
+        Some works are inspired by recognizable characters and storyworlds.
+        They are personal, unofficial AI-assisted interpretations—not
+        sponsored by, affiliated with, or endorsed by the original creators or
+        rights holders. Gratitude recognizes inspiration; it does not imply
+        participation or endorsement.
+      </p>
+    </section>
+
+    <button class="button button-outline dialog-return" type="button" data-close-story>
+      Return to the galleries
+    </button>
+  </div>
+</dialog>

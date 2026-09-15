@@ -1,0 +1,60 @@
+---
+import { Picture } from "astro:assets";
+import { getArtworkImage } from "../utils/artwork-images";
+
+interface Props {
+  artwork: {
+    id: string;
+    title: string;
+    alt: string;
+    file: string;
+    note?: string;
+  };
+  position: number;
+  note?: string;
+  groupSlug: string;
+}
+
+const { artwork, position, note, groupSlug } = Astro.props;
+const image = getArtworkImage(artwork.file);
+const imageUrl = image.src;
+const cardStyle = "--tile-image: url('" + imageUrl + "')";
+---
+
+<article class="artwork-entry" id={"work-" + artwork.id}>
+  <button
+    class="artwork-card"
+    type="button"
+    data-artwork-viewer
+    data-artwork-id={artwork.id}
+    data-artwork-title={artwork.title}
+    data-artwork-alt={artwork.alt}
+    data-artwork-src={imageUrl}
+    data-artwork-index={String(position)}
+    data-artwork-group={groupSlug}
+    data-artwork-note={note ?? ""}
+    style={cardStyle}
+    aria-label={"View artwork " + String(position).padStart(2, "0") + " of 12: " + artwork.title}
+  >
+    <span class="artwork-card-image">
+      <Picture
+        src={image}
+        alt=""
+        widths={[420, 640, 900]}
+        sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 28rem"
+        formats={["avif"]}
+        fallbackFormat="webp"
+        loading={position <= 3 ? "eager" : "lazy"}
+        fetchpriority={position === 1 ? "high" : "auto"}
+      />
+      <span class="artwork-open-hint" aria-hidden="true">View artwork</span>
+    </span>
+    <span class="artwork-card-caption">
+      <span class="artwork-position">{String(position).padStart(2, "0")}</span>
+      <span class="artwork-title">{artwork.title}</span>
+      <svg class="artwork-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 12h15M13 5l7 7-7 7" />
+      </svg>
+    </span>
+  </button>
+</article>
