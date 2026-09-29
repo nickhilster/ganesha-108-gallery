@@ -1,0 +1,13 @@
+{
+  "$schema": "./trackerbuddy.config.schema.json",
+  "productName": "Ganesha 108 Gallery",
+  "idPrefix": "G1G",
+  "theme": {
+    "background": "#0e0f11",
+    "panel": "#17181b",
+    "accent": "#5e6ad2",
+    "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Inter, Roboto, sans-serif",
+    "logoPath": "./public/favicon.svg",
+    "wordmark": "Ganesha 108 Gallery"
+  }
+}
