@@ -811,6 +811,19 @@ main {
   text-align: center;
 }
 
+.footer-credit {
+  margin: 0.3rem 0 0;
+  color: #838ea3;
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+.footer-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .story-dialog,
 .art-viewer {
   position: fixed;

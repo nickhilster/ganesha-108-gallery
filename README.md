@@ -8,7 +8,7 @@ Run npm install, then npm run dev.
 
 To build and preview the static site, run npm run build and npm run preview.
 
-Local builds use the site root by default. The Pages workflow sets `SITE_BASE=/ganesha-108-gallery`; to preview that deployment layout locally, set the same environment variable for both the build and verification commands.
+The canonical site URL defaults to `https://ganesha-108-gallery.vercel.app`; set `SITE_URL` (for example `https://ganesha108.nikdesign.ca`) when building for another host. Local builds use the site root by default. The Pages workflow sets `SITE_BASE=/ganesha-108-gallery`; to preview that deployment layout locally, set the same environment variable for both the build and verification commands.
 
 ## Archive and image preparation
 
@@ -45,3 +45,7 @@ Some works are inspired by recognizable characters and storyworlds. They are per
 ## Publication
 
 The static build is designed for GitHub Pages. The workflow under .github/workflows/pages.yml is manual so a push to the source repository does not publish the site by itself.
+
+---
+
+Built with ❤️ by [NikDesign](https://www.nikdesign.ca)
